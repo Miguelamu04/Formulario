@@ -22,6 +22,7 @@ $terminos =!empty($_POST["acepta"]) ? ($_POST["acepta"]) : "No se han aceptado l
 
 //Nacimiento
 $seleccion =!empty($_POST["lugar"]) ? ($_POST["lugar"]) : "No se ha seleccionado nada";
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,8 +41,12 @@ $seleccion =!empty($_POST["lugar"]) ? ($_POST["lugar"]) : "No se ha seleccionado
             <p class="parrafosDatos">
                 <h3>Intereses seleccionados:</h3>
                 <?php 
-                foreach ($temas as $valor) {
-                    echo "<li>" . $valor . "</li>";
+                if (is_array($temas)) {
+                    foreach ($temas as $valor) {
+                        echo "<li>" . $valor . "</li>";
+                    }
+                } else {
+                    echo "<p>" . $temas . "</p>";
                 }
                 ?>
             </p>
